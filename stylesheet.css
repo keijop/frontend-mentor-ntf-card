@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --primary-soft-blue: hsl(215, 51%, 70%);
+  --primary-cyan: hsl(178, 100%, 50%);
+  --bg-main: hsl(217, 54%, 11%);
+  --bg-card: hsl(216, 50%, 16%);
+  --blue-line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-weight300: 300;
+  --font-weight400: 400;
+  --font-weight600: 600;
+  --font-size: 18px;
+  --font-family: 'Outfit', sans-serif;
+
+  --border-radius: 10px;
+}
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-main);
+  color: var(--white);
+  font-family: var(--font-family);
+}
+.card {
+  width: 275px;
+  height: 475px;
+  /* width: 19vw;
+  height: 33vw; */
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.img-container {
+  background: var(--primary-cyan);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  /* overlapping elements with same border radius have odd behaviour -
+  some pixels of the deeper element is visible, we give the 
+  top most element 1px less border radius to fix this issue */
+  border-radius: calc(var(--border-radius) - 1px);
+  opacity: 1;
+}
+
+.img-container:hover img:first-child {
+  opacity: 0.5;
+}
+
+.img-container:hover .img-icon {
+  opacity: 1;
+}
+
+.img-icon {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  opacity: 0;
+}
+
+.title {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: var(--primary-cyan);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.description,
+.info__right {
+  font-weight: var(--font-weight300);
+  color: var(--primary-soft-blue);
+  display: inline-block;
+}
+
+.info__right::before {
+  content: '';
+  background-image: url('images/icon-clock.svg');
+  background-repeat: no-repeat;
+  height: 100%;
+  padding-left: 20px;
+}
+
+.info__left {
+  font-weight: var(--font-weight600);
+  color: var(--primary-cyan);
+}
+
+.info__left::before {
+  content: url('images/icon-ethereum.svg');
+  padding-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.footer {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--blue-line);
+  margin: 1rem 0;
+  cursor: pointer;
+}
+.footer span {
+  color: var(--primary-soft-blue);
+  font-weight: var(--font-weight300);
+  white-space: pre;
+}
+
+.footer::before {
+  content: '';
+  background-image: url('images/image-avatar.png');
+  background-size: cover;
+  display: inline-block;
+  position: relative;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-right: 1rem;
+}
+
+.footer:hover {
+  color: var(--primary-cyan);
+}
+
+/* ----------------------------- */
+.attribution {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 0 auto;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    width: 100%;
+    height: auto;
+    margin: 3rem 1.5rem;
+    padding: 1.5rem;
+  }
+  .footer {
+    margin-bottom: 0;
+  }
+}
